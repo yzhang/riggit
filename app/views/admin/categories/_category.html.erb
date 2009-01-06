@@ -1,0 +1,10 @@
+<li id='category<%= category.id %>'>
+    <%= link_to category.name, edit_admin_category_path(category), :onclick => 'return GB_showCenter("Edit Category", this.href, 200, 400)' %>
+    (<%= link_to_remote 'Delete', :url => admin_category_path(category), :method => 'delete', :confirm => 'Are you sure to delete this category?' %>)
+    
+    <ul>
+        <% category.children.each do |child| %>
+            <%= render :partial => 'category', :object => child %>
+        <% end %>
+    </ul>
+</li>

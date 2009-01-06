@@ -1,0 +1,19 @@
+<div class="span-22 title">
+    Edit Story
+</div>
+
+<% if @story.errors.count != 0 %>
+<div class="span-16 content">
+    <%= error_messages_for :story %>
+</div>
+<% end %>
+
+<% form_for @story, :url => admin_story_path(@story) do |form| %>
+<div class="span-16 content">
+    <%= render :partial => 'stories/form', :object => form %>
+
+    <p>
+        <%= form.submit 'Update' %>
+    </p>
+</div>
+<% end %>

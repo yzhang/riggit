@@ -1,0 +1,13 @@
+<div id="user<%= user.id %>" class="span-22">
+    <div class="span-4">
+		<%= user.login %>
+		<%= link_to_remove user %>
+	</div>
+    <div class="span-8">
+        <div id="user<%= user.id %>_roles">
+            <%= link_to_user_roles(user) %>
+        </div>
+        
+        <%= collection_select :user, :role_id, @roles, :id, :title, {:prompt => true}, {:onchange => "update_user(this, '#{user.id}')"} if false %>
+    </div>
+</div>

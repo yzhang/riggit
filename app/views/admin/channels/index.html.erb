@@ -1,0 +1,15 @@
+<div class="span-22 title">
+    All Channels
+</div>
+
+<div class="span-22 body">
+<ul>
+<% @channels.each do |channel| %>
+    <%= render :partial => 'channel', :object => channel %>
+<% end %>
+</ul>
+
+<%= will_paginate @channels %>
+
+<%= link_to 'Add Channel', new_admin_channel_path, :class => 'button' %>
+</div>

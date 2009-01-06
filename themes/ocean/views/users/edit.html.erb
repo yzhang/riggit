@@ -1,0 +1,41 @@
+<div class="span-16 content">
+    <%= error_messages_for :user %>
+</div>
+
+<div class="span-16 content">
+    <h2><%= 'Edit Avatar'.t %></h2>
+
+    <%= avatar_tag @user %>
+    
+    <% form_for @user, :html => {:multipart => true} do |f| -%>
+        <% fields_for @user.profile do |profile| %>
+        <p>
+            <label for="avatar"><%= 'Choose your avatar'.t %></label><br/>
+            <%= profile.file_field :avatar_data %>
+        </p>
+        <% end %>
+</div>
+
+<div class="span-16 content">
+    <h2><%= 'Reset Password'.t %></h2>    
+    
+        <p>
+            <label for="old_password"><%= 'Current Password'.t %></label><br/>
+            <%= text_field_tag :old_password %>
+        </p>
+        
+        <p>
+            <label for="password"><%= 'Password'.t %></label><br/>
+            <%= f.text_field :password %>
+        </p>
+        
+        <p>
+            <label for="password_confirmation"><%= 'Password Confirmation'.t %></label><br/>
+            <%= f.text_field :password_confirmation %>
+        </p>                
+        
+        <p>
+            <%= submit_tag 'Update Setting'.t %>
+        </p>
+    <% end -%>
+</div>

@@ -1,0 +1,23 @@
+<div class="span-16 comment">
+    <div class="span-3 avatar">
+        <%= avatar_tag comment.user %><br />
+        <%= link_to_user comment.user %>
+    </div>
+    
+    <div class="span-13 body">
+        <%= sanitize(comment.body) %>
+    </div>
+    
+    <div class="span-13 footer">
+        <%= link_to "Show Replies".t + "(#{comment_count_tag(comment)})", '#', :onclick => "$('##{comment.div_id}_replies').toggle(); return false;" %>
+
+        <div id="<%= comment.div_id %>_replies"  class="replies" style="display:none">
+            <div id="<%= comment.div_id %>_comments">
+                <% comment.comments.each do |reply| %>
+                    <%= render :partial => '/comments/sub_comment', :object => reply %>
+                <% end %>
+            </div>
+            <%= comment_form(comment) %>
+        </div>
+    </div>    
+</div>

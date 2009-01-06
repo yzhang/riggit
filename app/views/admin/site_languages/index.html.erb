@@ -1,0 +1,26 @@
+<div class="span-22 title">
+    All Languages(<%= link_to_function 'New', '$("#new_language").toggle()' %>)
+</div>
+
+<div id="new_language" style="display:none">
+    <% form_for(@site_language, :url => admin_site_languages_path) do |f| %>
+
+    <p>
+        <%= f.label :language_id %><br />
+        <%= f.collection_select :language_id, @languages, :id, :english_name, {:prompt => true} %>
+    </p>
+    <p>
+        <%= f.submit "Create" %>
+    </p>
+    <% end %>
+</div>
+
+<div class="span-22 body">
+    <div class="span-17">Language Name</div>
+    <div class="span-4">Action</div>
+	
+    <% @site_languages.each do |site_language| %>
+        <div class="span-17"><%= site_language.language.english_name %></div>
+        <div class="span-4"><%= link_to "Delete", admin_site_language_path(site_language), :method => 'delete', :confirm => 'Are you sure you want to delete this language?' %></div>        
+    <% end %>
+</div>

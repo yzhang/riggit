@@ -1,0 +1,8 @@
+<div class="span-16 content">
+    <h2>Stories Post By <%= @user.login %></h2>
+    <% @user.stories.each do |story| %>
+        <%= render :partial => '/stories/simple_story', :object => story %>
+    <% end %>    
+</div>
+    
+

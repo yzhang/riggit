@@ -1,0 +1,30 @@
+<% content_for :submenu do %>
+<ul>
+    <li class="selected">
+        <%= link_to 'Edit', '#', :onclick => 'return false;' %>
+    </li>
+    <li>
+        <%= link_to 'Manage', admin_categories_path %>
+    </li>
+    <li>
+        <%= link_to 'Add', new_admin_category_path %>
+    </li>
+</ul>
+<% end %>
+
+<div class="span-22 title">
+    Create New Category
+</div>
+
+<div class="span-22 body">
+<%= error_messages_for :category %>
+
+<% form_for @category, :url => admin_category_path(@category) do |form| %>
+    
+    <%= render :partial => 'form', :object => form %>
+    
+    <p>
+        <%= form.submit 'Update' %>
+    </p>
+<% end %>
+</div>

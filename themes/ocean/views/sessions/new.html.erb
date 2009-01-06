@@ -1,0 +1,20 @@
+<div class="span-16 content">
+<h2><%= 'Log In'.t %></h2>
+
+<% form_tag session_path do -%>
+<p><label for="login"><%= 'Login'.t %></label><br/>
+<%= text_field_tag 'login', @login %></p>
+
+<p><label for="password"><%= 'Password'.t %></label><br/>
+<%= password_field_tag 'password', nil %></p>
+
+
+<p><label for="remember_me"><%= 'Remember me:'.t %></label>
+<%= check_box_tag 'remember_me', '1', @remember_me %></p>
+
+<p>
+    <%= submit_tag 'Log in'.t %>
+    <%= link_to 'Register'.t, new_user_path %>
+</p>
+<% end -%>
+</div>

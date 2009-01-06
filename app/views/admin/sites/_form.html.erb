@@ -1,0 +1,65 @@
+<p>
+    <label for="name">Name</label>
+    <%= form.text_field :name %>
+</p>
+
+<p>
+    <label for="description">Description</label>
+    <%= form.text_field :description, :size => 80 %>
+</p>
+
+<p>
+    <%= form.check_box :show_description %>
+    <label for="show_description">Show Description</label>
+</p>
+
+<p>
+    <label for="admin_email">Admin Email</label>
+    <%= form.text_field :admin_email %>
+</p>
+
+<p>
+    <label for="url">Site url</label>
+    <%= form.text_field :url %>
+</p>
+
+<p>
+    <label for="minimal_diggs">Logo</label>
+    <%= form.file_field :logo_data %>
+</p>
+
+<p>
+    <label for="default_channel">Default Channel</label>
+    <%= form.collection_select :default_channel, @channels, :id, :name, {:prompt => true} %>
+    <%= link_to 'Create New Channel', new_admin_channel_path %>
+</p>
+
+<p>
+    <%= form.check_box :notify_new_comment %>
+    <label for="notify_new_comment">Notify admin new comment added</label>
+</p>
+
+<p>
+    <%= form.check_box :notify_new_story %>
+    <label for="notify_new_story">Notify admin new story added</label>
+</p>
+
+<p>
+    <%= form.check_box :notify_new_user %>
+    <label for="notify_new_user">Notify admin new user registered</label>
+</p>
+
+<p>
+    <label for="google_analytics">Google Analytics Code</label><br />
+    <%= form.text_area :google_analytics, :cols => '60', :rows => '10' %>
+</p>
+
+<p>
+    <%= form.check_box :show_advertisement %>
+    <label for="show_advertisement">Show Advertisement</label>
+</p>
+
+<p>
+    <label for="google_analytics">Google Adsense Code</label><br />
+    <%= form.text_area :google_adsense, :cols => '60', :rows => '10' %>
+</p>

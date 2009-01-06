@@ -1,0 +1,11 @@
+<%= syntax_css("sunburst") %>
+
+<% @stories.each do |story| %>
+    <%= render :partial => 'story', :object => story %>
+<% end %>
+
+<div class="span-16 story">
+    <%= will_paginate @stories %>
+</div>
+
+    

@@ -1,0 +1,24 @@
+<% content_for :submenu do %>
+<ul>
+    <li class="selected">
+        <%= link_to 'Create Site', '#', :onclick => 'return false;' %>
+    </li>
+</ul>
+<% end %>
+
+<div class="span-22 title">
+    Create New Site
+</div>
+
+<div class="span-22 body">
+<%= error_messages_for :site %>
+
+<% form_for @site, :url => admin_sites_path do |form| %>
+    
+    <%= render :partial => 'form', :object => form %>
+    
+    <p>
+        <%= form.submit 'Create' %>
+    </p>
+<% end %>
+</div>

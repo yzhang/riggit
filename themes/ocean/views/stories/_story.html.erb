@@ -1,0 +1,39 @@
+<div class="span-16 story">
+    <div id="diggable<%= story.id %>" class="span-3 digg">
+        <%= render :partial => '/diggs/digg_link', :locals => {:diggable => story} %>
+    </div>
+    
+    <div class="span-13 body">
+        <p><h2 class="posttitle"><%= link_to_title(story) %></h2></p>
+	    <%= link_to(image_tag(story.image_url, :width => '160'), story.url) unless story.image_url.blank? %>
+		<%= youtube_thumbnail_tag(story) unless story.youtube_video_id.blank? %>
+
+        <p><%= 'Post by '.t %><%= link_to_user(story.user) %><%= ' at '.t %><%= time_ago_in_words(story.updated_at) %></p>
+
+		<%= youtube_video_tag(story) unless story.youtube_video_id.blank? %>
+
+	    <p>
+	      <%= sanitize_summary(story.summary) %>
+	    </p>
+	    
+	    <p><%= link_to_tags(story.tag_list) %></p>
+	    
+	    <p>
+	        <ul>
+	            <% story.links.each do |link| %>
+	            <li><%= link.name %>: <%= link_to link.url, link.url %></li>
+	            <% end %>
+	        </ul>
+	    </p>
+    </div>
+
+    <div class="span-13 footer">
+        <div class="span-4">
+            <a href="<%= story_path(story) + '#comments' %>"><%= 'Comments'.t %>(<%= comment_count_tag(story) %>)</a>
+        </div>
+
+        <div class="span-4">
+            <%= link_to 'Original link'.t, story.url %>
+        </div>
+    </div>
+</div>

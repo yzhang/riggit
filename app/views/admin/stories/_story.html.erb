@@ -1,0 +1,24 @@
+<script type="text/javascript" charset="utf-8">
+function moderate_story(element, story_id)   
+{
+    channel_id = $(element.options[element.selectedIndex]).val();
+    if(channel_id != '') {
+        $.post('/admin/moderated_stories', {story_id:story_id, channel_id: channel_id}, function(data){
+            $('#story' + story_id + '_channels').show('highlight');
+            $('#story' + story_id + '_channels').html(data);
+        });
+    }
+} 
+</script>
+
+<div id="story<%= story.id %>">
+    <div class="span-12"><%= link_to story.title, edit_admin_story_path(story) %></div>
+    <div class="span-2"><%= link_to_user story.user %></div>
+    <div class="span-5">
+        <div id="story<%= story.id %>_channels">
+            <%= link_to_story_channels(story) %>
+        </div>
+        <%= collection_select :story, :channel, @channels, :id, :name, {:prompt => true}, {:onchange => "moderate_story(this, '#{story.id}')"} %>
+    </div>        
+    <div class="span-2"><%= link_to_remote 'Delete', :url => admin_story_path(story), :method => 'delete', :confirm => 'Are you sure you want to delete this story?' %></div>    
+</div>

@@ -1,0 +1,16 @@
+<% if @story.errors.count != 0 %>
+<div class="span-16 content">
+    <%= error_messages_for :story %>
+</div>
+<% end %>
+
+<% form_for @story do |form| %>
+<div class="span-16 content">
+    <h2>New Story</h2>
+    <%= render :partial => 'form', :object => form %>
+
+    <p>
+        <%= form.submit 'Create'.t %>
+    </p>
+</div>    
+<% end %>

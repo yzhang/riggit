@@ -1,0 +1,20 @@
+
+
+<div class="span-22 title">
+    All Stories
+</div>
+
+<div class="span-22 body">
+    <div class="span-12">Title</div>
+    <div class="span-2">Post By</div>
+    <div class="span-5">Channels</div>        
+    <div class="span-2">Delete</div>    
+
+    <% @stories.each do |story| %>
+        <%= render :partial => 'story', :object => story %>
+    <% end %>
+</div>
+
+<div class="span-22 body">
+    <%= will_paginate @stories %>    
+</div>

@@ -1,0 +1,21 @@
+
+
+<div class="span-22 title">
+    All Translations
+</div>
+
+<div class="span-22 body">
+    <div class="span-5">Language</div>
+    <div class="span-16">Percent</div>        
+
+	<% @languages.each do |language| %>
+	<p>
+		<div class="span-5"><%= language.english_name %></div>
+	    <div class="span-16"><%= number_with_precision(translation_percent(language), 1) %>%
+		(
+			<%= link_to 'translated'.t, translated_admin_translations_path(:language_id => language.iso_639_1) %>|
+			<%= link_to 'untranslated'.t, untranslated_admin_translations_path(:language_id => language.iso_639_1) %>		
+		)</div>
+	</p>
+	<% end %>
+</div>

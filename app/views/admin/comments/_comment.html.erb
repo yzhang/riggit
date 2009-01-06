@@ -1,0 +1,16 @@
+<div id="comment<%= comment.id %>">
+    <div class="span-12"><%= link_to_comment(comment) %></div>
+    <div class="span-5"><%= link_to comment.commentable.title, comment.commentable %></div>
+    <div class="span-2"><%= link_to_user comment.user %></div>        
+    <div class="span-2"><%= link_to_remote 'Delete', :url => admin_comment_path(comment), :method => 'delete', :confirm => 'Are you sure you want to delete this story?' %></div>
+    
+    <div id="sub_comments<%= comment.id %>" style="display:none;">
+    <% comment.comments.each do |sub_comment| %>
+        <div id="comment<%= sub_comment.id %>">
+           <div class="span-16 prepend-1"><%= sub_comment.body %></div>
+           <div class="span-2"><%= link_to_user sub_comment.user %></div>        
+           <div class="span-2"><%= link_to_remote 'Delete', :url => admin_comment_path(sub_comment), :method => 'delete', :confirm => 'Are you sure you want to delete this story?' %></div>
+        </div>
+    <% end %>
+    </div>
+</div>

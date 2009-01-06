@@ -1,0 +1,17 @@
+<% form_for @translation, :url => admin_translation_path(@translation) do |form| %>
+  <%= hidden_field_tag :language_id, @translation.language.iso_639_1 %>
+
+  <p>
+	<label for="tr_key"><%= 'English'.t %></label><br />	
+    <%= text_area_tag :tr_key, @translation.tr_key, :cols => 40, :rows => 10 %>
+  </p>
+
+  <p>
+	<label for="text"><%= 'Translation'.t %></label><br />	
+    <%= text_area_tag :text, @translation.text, :cols => 40, :rows => 10%>
+  </p>
+
+  <p>
+    <%= submit_tag "Create".t %>
+  </p>
+<% end %>

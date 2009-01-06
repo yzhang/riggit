@@ -1,0 +1,24 @@
+<% content_for :footer do %>
+  <%= javascript_include_tag 'admin/users/index.js' %>
+<% end %>
+
+<div class="span-22 title">
+    All Users
+</div>
+
+<div class="span-22 body">
+    <%= will_paginate @users %>
+</div>
+
+<div class="span-22 body">
+    <div class="span-4">Login</div>
+    <div class="span-8">Roles</div>
+
+    <% @users.each do |user| %>
+        <%= render :partial => 'user', :object => user %>
+    <% end %>
+</div>
+
+<div class="span-22 body">
+    <%= will_paginate @users %>
+</div>

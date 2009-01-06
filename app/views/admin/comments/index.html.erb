@@ -1,0 +1,22 @@
+<div class="span-22 title">
+    All Comments
+</div>
+
+<div class="span-22 body">
+    <%= will_paginate @comments %>
+</div>
+
+<div class="span-22 body">
+    <div class="span-12">Body</div>
+    <div class="span-5">Story</div>
+    <div class="span-2">Author</div>        
+    <div class="span-2">Action</div>    
+
+    <% @comments.each do |comment| %>
+        <%= render :partial => 'comment', :object => comment %>
+    <% end %>
+</div>
+
+<div class="span-22 body">
+    <%= will_paginate @comments %>
+</div>

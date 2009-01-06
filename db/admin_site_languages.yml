@@ -1,0 +1,17 @@
+--- 
+- !ruby/object:SiteLanguage 
+  attributes: 
+    updated_at: 2008-07-28 02:38:17
+    id: "2"
+    language_id: "7484"
+    created_at: 2008-07-28 02:38:17
+  attributes_cache: {}
+
+- !ruby/object:SiteLanguage 
+  attributes: 
+    updated_at: 2008-07-28 02:42:13
+    id: "3"
+    language_id: "1819"
+    created_at: 2008-07-28 02:42:13
+  attributes_cache: {}
+

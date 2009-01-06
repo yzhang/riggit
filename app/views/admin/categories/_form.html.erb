@@ -1,0 +1,9 @@
+<p>
+    <label for="name">Name</label><br />
+    <%= form.text_field :name %>
+</p>
+
+<p>
+    <label for="parent_id">Parent</label><br />
+    <%= form.collection_select :parent_id, Category.root, :id, :name, {:prompt => true} %>
+</p>

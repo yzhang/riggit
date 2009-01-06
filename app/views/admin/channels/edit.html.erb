@@ -1,0 +1,27 @@
+<% content_for :submenu do %>
+<ul>
+    <li class="selected">
+        <%= link_to 'Manage', '#', :onclick => 'return false;' %>
+    </li>
+    <li>
+        <%= link_to 'Add', new_admin_channel_path %>
+    </li>
+</ul>
+<% end %>
+
+<div class="span-22 title">
+    Edit Channel
+</div>
+
+<div class="span-22 body">
+<%= error_messages_for :channel %>
+
+<% form_for @channel, :url => admin_channel_path(@channel) do |form| %>
+    
+    <%= render :partial => 'form', :object => form %>
+    
+    <p>
+        <%= form.submit 'Update', :class => 'button' %>
+    </p>
+<% end %>
+</div>

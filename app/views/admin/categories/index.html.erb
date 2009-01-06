@@ -1,0 +1,15 @@
+<div class="span-22 title">
+    All Categories
+</div>
+
+<div class="span-22 body">
+<ul>
+<% @categories.each do |category| %>
+    <%= render :partial => 'category', :object => category %>        
+<% end %>
+
+<%= will_paginate @categories %>
+</ul>
+
+<%= link_to 'Create new', new_admin_category_path, :onclick => 'return GB_showCenter("New Category", this.href, 400, 400, function(){window.location.reload();})', :class => 'button' %>
+</div>

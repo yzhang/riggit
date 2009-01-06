@@ -1,0 +1,16 @@
+<div class="span-22 title">
+    Site Setting
+</div>
+
+<div class="span-22 body">
+<%= error_messages_for :site %>
+
+<% form_for @site, :url => admin_site_path(@site), :html => {:multipart => true} do |form| %>
+    
+    <%= render :partial => 'form', :object => form %>
+    
+    <p>
+        <%= form.submit 'Update' %>
+    </p>
+<% end %>
+</div>

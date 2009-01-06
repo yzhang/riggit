@@ -1,0 +1,27 @@
+<% content_for :submenu do %>
+<ul>
+    <li>
+        <%= link_to 'Manage', admin_channels_path %>
+    </li>
+    <li class="selected">
+        <%= link_to 'Add', '#' %>
+    </li>
+</ul>
+<% end %>
+
+<div class="span-22 title">
+    Create New Channel
+</div>
+
+<div class="span-22 body">
+<%= error_messages_for :channel %>
+
+<% form_for @channel, :url => admin_channels_path do |form| %>
+    
+    <%= render :partial => 'form', :object => form %>
+    
+    <p>
+        <%= form.submit 'Create' %>
+    </p>
+<% end %>
+</div>

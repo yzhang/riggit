@@ -1,0 +1,179 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+	
+	<title><%= @site_title || 'Riggit Demo ---- A demo site of Riggit' %></title>
+	<meta name="description" content="<%= @site_description %>">
+    <link href="/stylesheets/screen.css" rel="stylesheet" type="text/css" />
+    <%= theme_stylesheet_link_tag('ocean') %>
+
+    <script src="/javascripts/jquery.js" type="text/javascript"></script>
+	<script src="/javascripts/jquery-ui.js" type="text/javascript"></script>
+	<script src="/javascripts/jquery-fx.js" type="text/javascript"></script>
+	<script src="/javascripts/jrails.js" type="text/javascript"></script>
+	<script src="/javascripts/application.js" type="text/javascript"></script>
+	<script src="/javascripts/swfobject.js" type="text/javascript"></script>
+
+    <% if @feed_title %>
+        <link rel="alternate" type="application/rss+xml" title="<%= @feed_title %>" href="<%= url_for(:format => :atom) %>" />
+    <% end %>
+</head>
+
+<body>
+<div id="container">
+	<div class="span-24 header">
+    	<div class="span-15 logo sitename">
+        	<a href="/">
+                    <% if @current_site.logo %>
+                        <%= image_tag @current_site.logo %>
+                    <% else %>
+                        <%= site_name(@current_site) %>
+                    <% end %>
+            </a>          
+        </div>
+        
+        <div class="span-7 search last">
+			<% if false %>
+            <% form_tag :url => '/search' do %>
+                <%= text_field_tag :query, '', :size => '28' %>
+                <%= submit_tag 'Search'.t %>
+            <% end %>
+			<% end %>
+        
+            <div class="login">
+            <% if logged_in? %>
+                <%= current_user.login %>, <%= link_to 'Logout'.t, logout_path, :method => 'delete' %>
+            <% else %>
+                <%= link_to 'Login'.t, login_path %> | <%= link_to 'Register'.t, new_user_path %>
+            <% end %>
+            </div>
+        </div>
+        
+        <% unless @current_site.description.blank? || !@current_site.show_description %>
+    	<div class="span-15 description">        
+            <%= site_description(@current_site) %>
+        </div>
+        <% end %>
+    </div>
+    <!-- end of header -->
+    
+	<div class="span-24 container-content">
+    	<div class="span-24">
+    	    <div class='mainmenu'>
+                <ul>
+                    <%= render_channel_menu %>
+                </ul>
+                
+                <ul class="user-menu">
+                    <li>
+                        <%= link_to 'New Story'.t, new_story_path %>
+                    </li>
+                    <% if logged_in? %>
+                    <li>
+                        <%= link_to 'Setting'.t, edit_user_path(current_user) %>
+                    </li>
+                    <% end %>         
+                </ul>
+            </div>
+		</div>
+		<div class="span-24">
+		    <div class="submenu">
+		    <ul>
+		        <% @categories.each do |category| %>
+		            <%= link_to_category category %>
+		        <% end %>
+            </ul>
+            
+            <ul class="flags">
+                <%= languages_tag %>
+            </ul>
+            </div>
+		</div>
+		
+    	<div class="span-16">
+    	    <% if @current_site.show_advertisement %>
+    	    <div class="span-16 story">
+    	        <%= @current_site.google_adsense %>
+    	    </div>
+            <% end %>
+            
+            
+            <% if flash[:notice] %>
+    	    <div class="span-16 flash green">
+    	        <%= flash[:notice] %>
+    	    </div>
+    	    <% end %>
+    	    
+    	    <% if flash[:error] %>
+    	    <div class="span-16 flash red">
+    	        <%= flash[:error] %>
+    	    </div>
+    	    <% end %>
+            
+            <%= yield %>
+                
+                <!--                                          
+                <div id="tagcloud">
+                    <div id="tagcloud-top"></div>
+                    <div id="tagcloud-mid">
+                    	<h2 class="posttitle">Find a Code</h2>
+                        <div id="thecloud">
+                        	
+                        </div>
+                    </div>
+                    <div id="tagcloud-bot"></div>
+                </div>
+                -->
+        </div>
+
+        <div class="span-7 last widget">
+            <h2>Advertiserment</h2>
+			<div class="content">
+                <a href="http://zoomtype.info/"><img src="http://zoomtype.info/images/logo.png"></a>
+                <a href="http://zoomtype.info/"><img src="http://zhangyuanyi.net/pic/ELC_logo_letrails.png"></a>
+            </div>
+        </div>
+
+        <div class="span-7 last widget">
+            <h2>Source</h2>
+			<div class="content">
+                <a href="http://code.google.com/p/riggit/">Get Source of Riggit.org</a>
+            </div>
+        </div>
+
+		<div class="span-7 last widget">
+            <h2>Links</h2>
+			<div class="content">
+				<ul>
+                <% SiteLink.find(:all).each do |link| %>
+					<li><%= link_to h(link.title), link.url %></li>
+				<% end %>
+				</ul>
+            </div>
+        </div>
+        
+        <div class="span-7 last widget">
+            <h2>Tag Cloud</h2>
+			<div class="content">
+                <% tag_cloud @tags, %w(tag1 tag2 tag3 tag4) do |tag, css_class| %>
+                    <% if @current_tag && tag.name == @current_tag.name %>
+                        <%= link_to_tag(tag, :class => css_class + ' current') %>
+                    <% else %>
+                        <%= link_to_tag(tag, :class => css_class) %>
+                    <% end %>                    
+                <% end %>
+            </div>
+        </div>
+        <div class="span-24">
+            <div class="copy">
+                <small>&copy; <%= site_name(@current_site) %>, 2007</small>            
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+
+<%= yield :footer %>
+<%= @current_site.google_analytics %>

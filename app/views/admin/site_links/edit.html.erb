@@ -1,0 +1,22 @@
+<h1>Editing site_link</h1>
+
+<% form_for(@site_link) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+
+  <p>
+    <%= f.label :url %><br />
+    <%= f.text_field :url %>
+  </p>
+
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @site_link %> |
+<%= link_to 'Back', admin_site_links_path %>

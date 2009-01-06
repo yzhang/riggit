@@ -1,0 +1,23 @@
+<p>
+    <label for="name">Name</label><br />
+    <%= form.text_field :name %>
+</p>
+
+<p>
+    <label for="minimal_diggs">Minimal Diggs</label><br />
+    <%= form.text_field :minimal_diggs %>
+</p>
+
+<p>
+    <label for="sort_by">Sort By</label><br />
+    <%= form.select :sort_by, ['created_at', 'comment_count', 'digg_count'] %>
+</p>
+
+<p>
+    <label for="Weight">Position</label><br />
+    <%= form.text_field :weight %>
+</p>
+
+<p>
+    <%= form.check_box :need_moderate %><label for="need_moderate">Need Moderate?</label>
+</p>

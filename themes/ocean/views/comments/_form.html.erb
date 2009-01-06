@@ -1,0 +1,6 @@
+<% remote_form_for :comment, :url => comments_path do |form| %>
+    <%= text_area :comment, :body, :rows => "8", :cols => "48" %>
+    <%= submit_tag 'Add Comment'.t %>
+    <%= hidden_field :comment, :commentable_id, :value => commentable.id %>
+    <%= hidden_field :comment, :commentable_type, :value => commentable.class.to_s %>
+<% end %>

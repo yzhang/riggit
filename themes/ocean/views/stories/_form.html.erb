@@ -1,0 +1,85 @@
+<p>
+    <label for="title"><%= 'Title'.t %></label><br />
+    <%= form.text_field :title %>
+</p>
+
+<p>
+    <label for="tags"><%= 'Tags'.t %></label><br />
+    <%= form.text_field :tag_list %> <%= 'Separate multi-tags with comma'.t %>
+</p>
+
+<p>
+    <label for="url"><%= 'URL'.t %></label><br />
+    <%= form.text_field :url %>
+</p>
+
+<p>
+    <label for="category"><%= 'Category'.t %></label><br />
+    <%= form.collection_select :category_id, @categories, :id, :name, {:prompt => true} %>
+</p>
+</div>
+
+<script type="text/javascript" charset="utf-8">
+function add_link() 
+{
+    var name = $('#link_name').val();
+    var url = $('#link_url').val();    
+    if (name.length != 0 && url.length != 0) 
+    {
+        var e = '';
+        e += "<li>" + name + ': ' + url;
+        e += "<input type=\"hidden\" name=\"links[" + name + "]\" value=\"" + url + "\"/>";
+        e += "<a onclick=\"$(this).parent().remove();return false;\" href=\"#\">Remove</a>";
+        e += "</li>";
+        $('#links').html($('#links').html() + e)
+        $('#link_name').val('');
+        $('#link_url').val('');        
+    }
+}
+</script>
+
+<div class="span-16 content">
+    <h2><%= "Related Links" %></h2>
+    <p><%= 'These links will be displayed under the story.'.t %></p>
+    
+    <ul id="links">
+        <% @story.links.each do |link| %>
+            <li>
+                <%= link.name %>: <%= link.url %>
+                <input type="hidden" name="links[<%= link.name %>]" value="<%= link.url %>" />
+                <a onclick="$(this).parent().remove();return false;" href="#">Remove</a>
+            </li>
+        <% end %>
+    </ul>
+    <p>
+        <label for="name" style="margin-right: 90px">Name</label><label for="name">URL</label><br/>
+        <%= text_field :link, :name, :size => '15' %>
+        <%= text_field :link, :url, :size => '60' %> 
+        <%= link_to_function :add, "add_link();return false;", :class => 'button' %>        
+    </p>
+</p>
+
+<div id="countries" ></div>
+</div>
+
+<div class="span-16 content">
+    <h2><%= "Description" %></h2>    
+    <p>
+        <label for="image"><%= 'Image'.t %></label><br />
+        <%= form.text_field :image_url %>
+    </p>
+
+    <p>
+        <label for="image"><%= 'Youtube Video Id'.t %></label><br />
+        <%= form.text_field :youtube_video_id %>
+    </p>
+
+    <p>
+        <label for="summary"><%= 'Summary'.t %></label><br />
+        <%= form.text_area :summary, :cols => '60', :rows => '15' %>
+    </p>
+    
+    <p>
+        <%= form.check_box :notify_new_comment %>
+        <label for="notify_new_comment">Notify me when new comment was added</label>
+    </p>

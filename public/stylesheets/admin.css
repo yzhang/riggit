@@ -1,0 +1,222 @@
+@charset "utf-8";
+body {
+	/*background-color:#848661;*/
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color: #7f7f7f;
+	margin: auto;
+	width: 960px;
+}
+
+#container{
+	width: 960px;
+	margin-right:auto;
+	margin-left:auto;
+}
+
+.header {
+	background-color:#42648A;
+	border-right-width:1px;
+	border-left-width:1px;
+	border-right-style:solid;
+	border-left-style:solid;
+	border-right-color:#E2E3E4;
+	border-left-color:#E2E3E4;	
+}
+
+.logo {
+	padding-left: 10px;
+	padding-right: 30px;
+}
+
+.search {
+	margin: 10px 0px 0px 0px;
+}
+
+.login {
+	margin-top: 10px;
+	text-align: right;
+	font-size: 18px;
+	color: #EEEEFF;
+}
+
+.login a {
+	color: #EEEEFF;	
+}
+
+.sitename {
+	color: #EEEEFF;
+	font-weight: normal;
+	font-size: 28px;
+	margin-bottom: 10px;
+	display: block;
+}
+
+.container-content{
+	background-color:#F9F9F9;
+	border-right-width:1px;
+	border-left-width:1px;
+	border-right-style:solid;
+	border-left-style:solid;
+	border-right-color:#E2E3E4;
+	border-left-color:#E2E3E4;
+	margin: 0px;
+}
+
+a {
+	color: #9c9b50;
+	text-decoration:none;
+}
+
+/* ----- menu ----- */
+
+.mainmenu {
+	margin: 10px 10px 0px 10px;
+	height: 40px;
+	background-color:#E4F2FD;
+	border-width: 1px 1px 0px 1px;
+	border-style: solid;
+	border-color: #DFE8D1;
+}
+
+.mainmenu ul {
+	margin: 0;
+	padding: 0;
+}
+
+.mainmenu li {
+	display: inline;
+	font-weight: bolder;
+}
+
+.mainmenu li.selected a {
+	background-color:#FFFFFF;
+	border-color:#C6D9E9 rgb(198, 217, 233) rgb(255, 255, 255);
+	color:#D54E21;
+}
+
+.mainmenu li a {
+	display: block;
+	padding: 0 20px;
+	float: left;
+	line-height: 40px;
+	text-align: center;
+	color: #2583AD;
+}
+
+.mainmenu li a:hover {
+	color: #D54121;
+}
+
+.submenu {
+	margin: 0px 10px 10px 10px;	
+	height: 30px;
+	background-color:#FFFFFF;
+	color: #EEEEFF;
+	border-width: 0px 1px 1px 1px;
+	border-style: solid;
+	border-color: #DFE8D1;
+}
+
+.submenu ul {
+	margin: 0;
+	padding: 0;
+}
+
+.submenu li {
+	display: inline;
+	font-weight: bolder;
+}
+
+.submenu li.selected a {
+	color: #F2A455;
+}
+
+.submenu li a {
+	padding: 0px 20px;
+	display: block;
+	float: left;
+	line-height: 30px;
+	text-align: center;
+	color: #2583AD;
+}
+
+.submenu li a:hover {
+	color: #D54121;
+}
+/* ---- end of menu ----- */
+
+/* ---- start of story ----- */
+.content {
+	margin: 0px 0px 10px 10px;
+	padding:5px 5px 15px 15px;	
+	background-color: #FFFFFF;
+	border-width: 1px;
+	border-style:solid;
+	border-color: #DFE8D1;
+}
+
+.content .title {
+	margin: 10px 0px 10px 0px;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #DFE8D1;
+	font-size: 18px;
+}
+
+.content .body p{
+}
+
+.story .body img{
+	float: right;
+	margin-top: 10px;
+	margin-left: 10px;	
+	margin-bottom: 10px;		
+}
+
+.story .footer{
+	margin-left: 84px;
+	padding-top: 5px;
+	border-top-width: 1px;
+	border-top-style: solid;
+	border-top-color: #DFE8D1;
+	color: #2f3e3b;
+}
+
+/* ---- end of story ---- */
+
+a.button {
+	text-align: center;
+	padding: 5px 20px 5px 20px;
+	background-color: #FEFEF1;
+	border-width: 2px;
+	border-style: solid;
+	border-color: #DFE8D1;
+}
+
+a.button:hover {
+	background-color: #9DD156;
+	color: #EEEEFF;
+}
+
+.copy {
+	margin-top: 10px;
+	line-height: 30px;
+	text-align: center;
+	color: #DDDDEF;
+	height: 30px;
+	font-size: 14px;
+	background-color:#42648A;
+	border-top-width: 1px;
+	border-top-style: solid;
+	border-top-color: #DFE8D1;
+}
+
+/* pagination */ 
+.pagination { margin: 0 auto; display:block; margin-top:0.5em;}
+.pagination span{ float:left;color:#B7B09A;}
+.pagination a{ display:block; padding:0em 0.5em; border:1px solid #B7B09A; float:left; margin:0.2em;  }
+.pagination span{ float:left;color:#B7B09A;   }
+.pagination a:hover{ display:block; padding:0em 0.5em; border:1px solid #B7B09A; float:left; margin:0.2em; background-color:#B7B09A; color:#FFFFFF;}
+.pagination .disabled{ display:block; padding:0em 0.5em; border:1px solid #D3D3D3; float:left; margin:0.2em;color:#D3D3D3; }
+.pagination .current{ display:block; padding:0em 0.5em; border:1px solid #B7B09A; float:left; margin:0.2em; background-color:#B7B09A; color:#FFFFFF;}

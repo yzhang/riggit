@@ -1,0 +1,68 @@
+TmSyntaxHighlighting
+====================
+** NOTE: You must install ultraviolet *before* installing this plugin. Follow the instructions below.
+
+This plugin allows you to add TextMate themed syntax highlighting to your views.
+
+It requires the Ultraviolet gem, which requires TextPow, which requires oniguruma (both the gem and the system library).
+
+Oniguruma is a regular expression library used by TextPow in order to properly parse TextMate syntax/language files.
+It's relatively easy to install, here is the URL for the library:
+  http://www.geocities.jp/kosako3/oniguruma/
+
+Then you need to do
+  $ gem install ultraviolet  
+which should install ultraviolet, textpow, and oniguruma.
+
+Lastly, in order for this plugin to properly copy the syntax CSS files from ultraviolet, ultraviolet must already be installed. In other words, you need to install ultraviolet before installing this plugin.
+
+The plugin comes with a generator for the stylesheets for the different themes.
+  
+  # to see a list of themes
+  $ script/generate syntax_css list
+  
+  # to copy all the themes to public/stylesheets/syntax
+  $ script/generate syntax_css all
+  
+  # to copy a single theme to public/stylesheets/syntax
+  $ script/generate syntax_css theme_name
+  
+Example
+=======
+
+The plugin adds 2 view helper methods: code and syntax_css
+
+code (helper method) usage
+==========================
+
+  code(some_ruby_code, :theme => "twilight", :lang => "ruby", :line_numbers => true)
+  
+lang and line_numbers are optional. lang will default to plain_text and line_numbers will default to true.
+It is *HIGHLY* recommended that you fragment_cache or some other type of caching for code fragments (TextPow and/or Ultraviolet have some speed issues).
+
+theme can be an array, and one will be chosen at random.
+
+you can set defaults in an initializer:
+
+  # config/initializers/tm_syntax_config.rb
+  TmSyntaxHighlighting.defaults = {:theme => "sunburst", :line_numbers => true, :lang => "ruby"}
+  
+again, theme can be an array and will be chosen at random.
+
+
+syntax_css (helper_method) usage
+================================
+lastly, the syntax_css method will include the stylesheet tags for the themes
+
+you can call it with a theme name
+
+  syntax_css("twilight")
+  
+or if you call it with no options, it will include all the css files for the themes used in this request
+
+  code(some_ruby_code, :theme => "twilight")
+  code(some_more_ruby_code, :theme => "sunburst")
+  ...
+  syntax_css # yields stylesheet tags for both twilight and sunburst
+    
+

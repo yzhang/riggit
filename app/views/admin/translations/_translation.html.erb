@@ -1,0 +1,6 @@
+<div id="translation<%= translation.id %>">
+    <div class="span-12"><%= link_to translation.tr_key, edit_admin_translation_path(translation) %></div>
+    <div class="span-2"><%= translation.text %></div>
+    <div class="span-2"><%= translation.language %></div>
+    <div class="span-2"><%= link_to_remote 'Delete', :url => admin_translation_path(translation), :method => 'delete', :confirm => 'Are you sure you want to delete this translation?' %></div>    
+</div>

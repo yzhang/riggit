@@ -1,0 +1,19 @@
+<%= syntax_css("sunburst") %>
+
+<%= render :partial => 'story', :object => @story %>
+
+<a name="comments"></a>
+
+<div id="<%= @story.div_id %>_comments">
+<% @comments.each do |comment| %>
+    <%= render :partial => 'comments/comment', :object => comment %>
+<% end %>
+</div>
+
+<div class="span-16 comment">
+    <%= will_paginate @comments %>
+</div>
+
+<div class="span-16 comment">
+    <%= comment_form(@story) %>
+</div>

@@ -1,0 +1,4 @@
+<li id='channel<%= channel.id %>'>
+    <%= link_to channel.name, edit_admin_channel_path(channel), :onclick => 'return GB_showCenter("Edit Channel", this.href, 200, 400)' %>
+    (<%= link_to_remote 'Delete', :url => admin_channel_path(channel), :method => 'delete', :confirm => 'Are you sure you want to delete this channel?' %>)
+</li>

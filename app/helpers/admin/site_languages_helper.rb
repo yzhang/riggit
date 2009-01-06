@@ -1,0 +1,2 @@
+module Admin::SiteLanguagesHelper
+end

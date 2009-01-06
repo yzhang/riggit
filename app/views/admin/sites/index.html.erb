@@ -1,0 +1,24 @@
+<div class="span-22 title">
+    Dashboard
+</div>
+
+<div class="span-22 body">
+    <p>Contents Manage:</p>
+    <ul>
+        <li><%= link_to 'Manage Channels', admin_channels_path %></li>
+        <li><%= link_to 'Manage Categories', admin_categories_path %></li>
+        <li><%= link_to 'Manage Comments', admin_comments_path %></li>
+        <li><%= link_to 'Manage Stories', admin_stories_path %></li>                
+    </ul>                
+    
+    <p>Users Manage:</p>
+    <ul>
+        <li><%= link_to 'Manage Users', admin_users_path %></li>
+    </ul>
+    
+    <p>Site Manage</p>
+    <ul>
+        <li><%= link_to 'Site setting', edit_admin_site_path(@current_site) %></li>
+    </ul>
+</div>
+
